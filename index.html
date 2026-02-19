@@ -23,7 +23,7 @@
                 <i class="fas fa-bars text-xl"></i>
             </button>
             <div class="flex items-center space-x-2 md:space-x-4">
-                <img src="SAC.png" alt="IPMSAC Logo" class="h-8 md:h-11 w-auto object-contain">       
+                <a href="index.html"><img src="SAC.png" alt="IPMSAC Logo" class="h-8 md:h-11 w-auto object-contain"></a>       
                 <div class="h-6 w-[1px] bg-slate-200 mx-1 hidden sm:block"></div>
                 <h1 class="text-xs md:text-base font-bold tracking-tight text-slate-700 hidden sm:block">Darpan | The IPM Digital Hub</h1>
             </div>
@@ -69,7 +69,7 @@
                 </div>
 
                 <div>
-                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Clubs & SIGs</h3>
+                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Clubs</h3>
                     <ul id="club-list" class="space-y-1 text-sm"></ul>
                 </div>
             </div>
@@ -229,7 +229,6 @@
         const committees = ["Treasury Committee", "Academic Committee", "Infrastructure Committee", "Media and PR Committee", "Sports Committee", "Cultural Committee", "E-Cell", "Social Impact Committee"];
         const clubs = ["BlueOcean", "Adaa", "Amplif-i", "Photon", "Impulse", "Inquizit-i", "Econom-i", "Analytica", "Appl-i", "Literar-i", "Finance & Investment Club"];
 
-        // 1. SAC COORDINATOR TEMPLATE (RESTORING MADHAV RAMAN)
         const saccTemplate = (name) => `
             <div class="mb-12">
                 <h2 class="text-5xl font-black text-slate-900 tracking-tight">${name}</h2>
@@ -244,7 +243,9 @@
                 <div class="bg-slate-900 text-white p-8 rounded-3xl shadow-xl">
                     <h4 class="font-bold mb-6 text-slate-400 text-xs uppercase tracking-widest">Office Holder</h4>
                     <div class="flex items-center space-x-4 mb-8">
-                        <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center text-2xl font-black">MR</div>
+                        <img src="MR.png" 
+                            alt="Madhav Raman" 
+                            class="w-16 h-16 rounded-full object-cover border-2 border-slate-700">
                         <div>
                             <p class="text-xl font-bold">Madhav Raman</p>
                             <p class="text-slate-400 text-sm">IPM 2024</p>
@@ -298,7 +299,7 @@
             <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
                     <h2 class="text-4xl font-black text-slate-900">${name}</h2>
-                    <p class="text-slate-500 font-medium tracking-wide">Club / SIG</p>
+                    <p class="text-slate-500 font-medium tracking-wide">Club</p>
                 </div>
                 <div class="flex space-x-2">
                     <button class="bg-white border px-4 py-2 rounded-xl text-xs font-bold shadow-sm hover:bg-slate-50"><i class="fas fa-camera mr-2"></i>Events Gallery</button>
