@@ -11,31 +11,33 @@
         :root { --iim-crimson: #a51c30; --iim-gold: #c5a059; }
         .sidebar-link:hover { background-color: rgba(165, 28, 48, 0.1); border-left: 4px solid var(--iim-crimson); }
         .stat-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
-        /* For a sleek scrollbar in the sidebar */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-900">
 
-    <nav class="bg-white shadow-sm border-b sticky top-0 z-50 px-8 py-0 flex justify-between items-center h-16">
+    <nav class="bg-white shadow-sm border-b sticky top-0 z-50 px-4 md:px-8 py-0 flex justify-between items-center h-16">
         <div class="flex items-center">
             <button onclick="toggleMobileMenu()" class="lg:hidden p-2 mr-2 text-slate-600 hover:bg-slate-100 rounded-lg">
                 <i class="fas fa-bars text-xl"></i>
             </button>
-            <div class="flex items-center space-x-4">
-                <img src="SAC.png" alt="IPMSAC Logo" class="h-20 w-auto object-contain">       
-                <div class="h-6 w-[1px] bg-slate-200 mx-1"></div>
-                <h1 class="text-base font-bold tracking-tight text-slate-700">Darpan | The IPM Digital Hub</h1>
+            <div class="flex items-center space-x-2 md:space-x-4">
+                <img src="SAC.png" alt="IPMSAC Logo" class="h-8 md:h-11 w-auto object-contain">       
+                <div class="h-6 w-[1px] bg-slate-200 mx-1 hidden sm:block"></div>
+                <h1 class="text-xs md:text-base font-bold tracking-tight text-slate-700 hidden sm:block">Darpan | The IPM Digital Hub</h1>
             </div>
         </div>
-        <div class="flex items-center space-x-6">
-            <div class="hidden md:flex space-x-4">
-                <button onclick="showSection('home')" class="text-slate-500 hover:text-red-800 text-sm font-semibold px-2">Dashboard</button>
-                <button onclick="showSection('notices')" class="text-slate-500 hover:text-red-800 text-sm font-semibold px-2">Live Notice Board</button>
+        
+        <div class="flex items-center space-x-2 md:space-x-6">
+            <div class="hidden md:flex space-x-2">
+                <button onclick="showSection('home')" class="text-slate-500 hover:text-red-800 text-xs lg:text-sm font-semibold px-2">Dashboard</button>
+                <button onclick="showSection('notices')" class="text-slate-500 hover:text-red-800 text-xs lg:text-sm font-semibold px-2">Live Notice Board</button>
+                <button onclick="showSection('activities')" class="text-slate-500 hover:text-red-800 text-xs lg:text-sm font-semibold px-2">Activities</button>
+                <button onclick="showSection('gallery')" class="text-slate-500 hover:text-red-800 text-xs lg:text-sm font-semibold px-2">Gallery</button>
             </div>
-            <button class="bg-slate-900 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md hover:bg-red-900 transition-all">
-                <i class="fas fa-user-shield mr-2"></i>Admin Login
+            <button class="bg-slate-900 text-white px-3 md:px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold shadow-md hover:bg-red-900 transition-all">
+                <i class="fas fa-user-shield md:mr-2"></i><span class="hidden sm:inline">Admin Login</span>
             </button>
         </div>
     </nav>
@@ -48,6 +50,16 @@
                 <button onclick="toggleMobileMenu()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-red-800">
                     <i class="fas fa-times text-xl"></i>
                 </button>
+
+                <div class="lg:hidden mb-8 mt-4">
+                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Main Menu</h3>
+                    <div class="space-y-1">
+                        <button onclick="showSection('home')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 hover:bg-slate-50 rounded-lg">Dashboard</button>
+                        <button onclick="showSection('notices')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 hover:bg-slate-50 rounded-lg">Live Notice Board</button>
+                        <button onclick="showSection('activities')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 hover:bg-slate-50 rounded-lg">Activities</button>
+                        <button onclick="showSection('gallery')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 hover:bg-slate-50 rounded-lg">Gallery</button>
+                    </div>
+                </div>
 
                 <ul id="sacc-list" class="mb-8 mt-4 lg:mt-0"></ul>
                 
@@ -108,70 +120,105 @@
             </section>
 
             <section id="notices" class="content-section hidden">
-                <div class="max-w-4xl">
-                    <h2 class="text-3xl font-black mb-6">Notice Board</h2>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
-                        <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
-                            <span class="text-xs font-bold uppercase text-slate-400">Feb</span>
-                            <span class="text-2xl font-black">19</span>
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-black mb-8">Notice Board</h2>
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
+                            <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
+                                <span class="text-xs font-bold uppercase text-slate-400">Feb</span>
+                                <span class="text-2xl font-black">19</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold">IPMSAC Digital Portal: Phase 1 Beta</h4>
+                                <p class="text-slate-500 text-sm mt-1 leading-relaxed">The centralized portal prototype is now available for internal testing and coordination review.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="text-lg font-bold">IPMSAC Digital Portal: Phase 1 Beta</h4>
-                            <p class="text-slate-500 text-sm mt-1">The centralized portal prototype is now available for internal testing and coordination review.</p>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
+                            <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
+                                <span class="text-xs font-bold uppercase text-slate-400">Feb</span>
+                                <span class="text-2xl font-black">22</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold">POR Application Timeline 2026-27</h4>
+                                <p class="text-slate-500 text-sm mt-1 leading-relaxed">The official timeline for student council and committee head applications is now live. Ensure institutional memory preservation by adhering to the new handover protocols.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6 mt-4">
-                        <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
-                            <span class="text-xs font-bold uppercase text-slate-400">Feb</span>
-                            <span class="text-2xl font-black">22</span>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
+                            <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
+                                <span class="text-xs font-bold uppercase text-slate-400">Feb</span>
+                                <span class="text-2xl font-black">25</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold">End-Term Question Bank Uploaded</h4>
+                                <p class="text-slate-500 text-sm mt-1 leading-relaxed">The Academic Committee has integrated past papers and supplementary resources for core Mathematics and Economics courses into the Digital Vault.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="text-lg font-bold">POR Application Timeline 2026-27</h4>
-                            <p class="text-slate-500 text-sm mt-1">The official timeline for student council and committee head applications is now live. Ensure institutional memory preservation by adhering to the new handover protocols.</p>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
+                            <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
+                                <span class="text-xs font-bold uppercase text-slate-400">Mar</span>
+                                <span class="text-2xl font-black">01</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold">Live Project: Fintech Market Research</h4>
+                                <p class="text-slate-500 text-sm mt-1 leading-relaxed">A partner organization is offering a 4-week engagement. Strengthening IPM’s brand image through professional corporate collaborations.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6 mt-4">
-                        <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
-                            <span class="text-xs font-bold uppercase text-slate-400">Feb</span>
-                            <span class="text-2xl font-black">25</span>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
+                            <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
+                                <span class="text-xs font-bold uppercase text-slate-400">Mar</span>
+                                <span class="text-2xl font-black">04</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold">Student Lounge Maintenance Schedule</h4>
+                                <p class="text-slate-500 text-sm mt-1 leading-relaxed">Infrastructure Committee has approved a maintenance slot for the hostel lounges this Sunday. Enhancing transparency and campus facility management.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="text-lg font-bold">End-Term Question Bank Uploaded</h4>
-                            <p class="text-slate-500 text-sm mt-1">The Academic Committee has integrated past papers and supplementary resources for core Mathematics and Economics courses into the Digital Vault.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6 mt-4">
-                        <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
-                            <span class="text-xs font-bold uppercase text-slate-400">Mar</span>
-                            <span class="text-2xl font-black">01</span>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold">Live Project: Fintech Market Research</h4>
-                            <p class="text-slate-500 text-sm mt-1">A partner organization is offering a 4-week engagement. Strengthening IPM’s brand image through professional corporate collaborations. Check the external portal for details.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6 mt-4">
-                        <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
-                            <span class="text-xs font-bold uppercase text-slate-400">Mar</span>
-                            <span class="text-2xl font-black">04</span>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold">Student Lounge Maintenance Schedule</h4>
-                            <p class="text-slate-500 text-sm mt-1">Infrastructure Committee has approved a maintenance slot for the hostel lounges this Sunday. Enhancing transparency and campus facility management.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6 mt-4">
-                        <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
-                            <span class="text-xs font-bold uppercase text-slate-400">Mar</span>
-                            <span class="text-2xl font-black">08</span>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold">Flagship Event Calendar Release</h4>
-                            <p class="text-slate-500 text-sm mt-1">The Cultural Committee has finalized dates for the upcoming arts festival. All entity pages must update their "Annual Plan" sections accordingly.</p>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
+                            <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
+                                <span class="text-xs font-bold uppercase text-slate-400">Mar</span>
+                                <span class="text-2xl font-black">08</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold">Flagship Event Calendar Release</h4>
+                                <p class="text-slate-500 text-sm mt-1 leading-relaxed">The Cultural Committee has finalized dates for the upcoming arts festival. All entity pages must update their "Annual Plan" sections accordingly.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            <section id="activities" class="content-section hidden">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-black mb-4">Activities & Initiatives</h2>
+                    <p class="text-slate-500 mb-10">Centralized platform for comprehensive documentation related to student activities.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm h-64 flex flex-col items-center justify-center text-center">
+                            <i class="fas fa-palette text-3xl text-red-800 mb-4"></i>
+                            <h4 class="font-bold text-lg mb-2">Cultural Programs</h4>
+                            <p class="text-sm text-slate-400 italic">Objectives, timelines, and outcomes for flagship fests like Atharv.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm h-64 flex flex-col items-center justify-center text-center">
+                            <i class="fas fa-hands-helping text-3xl text-emerald-600 mb-4"></i>
+                            <h4 class="font-bold text-lg mb-2">Social Impact</h4>
+                            <p class="text-sm text-slate-400 italic">Initiatives conducted under IPMSAC for community development.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gallery" class="content-section hidden">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl font-black mb-4">Events Gallery</h2>
+                    <p class="text-slate-500 mb-10">Preserving institutional memory through visual documentation of IPM events.</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="aspect-square bg-slate-200 rounded-2xl flex items-center justify-center text-slate-400 text-xs italic font-bold">Flagship Media</div>
+                        <div class="aspect-square bg-slate-200 rounded-2xl flex items-center justify-center text-slate-400 text-xs italic font-bold">Academic Seminar</div>
+                        <div class="aspect-square bg-slate-200 rounded-2xl flex items-center justify-center text-slate-400 text-xs italic font-bold">Sports Tournament</div>
+                        <div class="aspect-square bg-slate-200 rounded-2xl flex items-center justify-center text-slate-400 text-xs italic font-bold">Cultural Night</div>
+                    </div>
+                </div>
+            </section>
+
             <section id="entity-page" class="content-section hidden">
                 <div id="entity-content-injector"></div>
             </section>
@@ -182,7 +229,7 @@
         const committees = ["Treasury Committee", "Academic Committee", "Infrastructure Committee", "Media and PR Committee", "Sports Committee", "Cultural Committee", "E-Cell", "Social Impact Committee"];
         const clubs = ["BlueOcean", "Adaa", "Amplif-i", "Photon", "Impulse", "Inquizit-i", "Econom-i", "Analytica", "Appl-i", "Literar-i", "Finance & Investment Club"];
 
-        // 1. SAC COORDINATOR TEMPLATE
+        // 1. SAC COORDINATOR TEMPLATE (RESTORING MADHAV RAMAN)
         const saccTemplate = (name) => `
             <div class="mb-12">
                 <h2 class="text-5xl font-black text-slate-900 tracking-tight">${name}</h2>
@@ -192,15 +239,15 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 space-y-8">
-                    <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm h-64 flex items-center justify-center text-slate-300 italic">Coordinator's Vision & Strategic Goals Placeholder</div>
+                    <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm h-64 flex items-center justify-center text-slate-300 italic text-center px-4">Coordinator's Vision for IPMSAC: Centralized Portal, Professional Branding, and Institutional Continuity.</div>
                 </div>
                 <div class="bg-slate-900 text-white p-8 rounded-3xl shadow-xl">
                     <h4 class="font-bold mb-6 text-slate-400 text-xs uppercase tracking-widest">Office Holder</h4>
                     <div class="flex items-center space-x-4 mb-8">
-                        <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center text-2xl font-black">SC</div>
+                        <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center text-2xl font-black">MR</div>
                         <div>
-                            <p class="text-xl font-bold">Placeholder Name</p>
-                            <p class="text-slate-400 text-sm">IPM Batch 11/12/13</p>
+                            <p class="text-xl font-bold">Madhav Raman</p>
+                            <p class="text-slate-400 text-sm">IPM 2024</p>
                         </div>
                     </div>
                     <div class="text-sm font-medium"><i class="fas fa-envelope mr-3 text-red-400"></i> ipmsacc@iimidr.ac.in</div>
@@ -208,7 +255,7 @@
             </div>
         `;
 
-        // 2. COMMITTEE TEMPLATE (Fixed nesting for President & Vice President)
+        // 2. COMMITTEE TEMPLATE (President & Vice President)
         const committeeTemplate = (name) => `
             <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
@@ -221,19 +268,25 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 space-y-6">
-                    <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm h-48 flex items-center justify-center text-slate-300 italic">Activity Calendar & Live Event Logs</div>
-                    <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm h-48 flex items-center justify-center text-slate-300 italic">Vision & Annual Roadmap Placeholder</div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm h-48 flex items-center justify-center text-slate-300 italic px-6 text-center">Activity Calendar: Dates, Timelines, and Documentation related to student activities.</div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm h-48 flex items-center justify-center text-slate-300 italic px-6 text-center">Vision & Annual Roadmap: Dedicated page showcasing vision, annual plans, and team structure.</div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm h-fit">
                     <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Committee Leadership</h4>
                     <div class="space-y-6">
                         <div class="flex items-center space-x-4">
-                            <div class="w-10 h-10 bg-slate-50 rounded-lg border flex items-center justify-center font-black">P</div>
-                            <div><p class="text-sm font-bold text-slate-800">President</p><p class="text-xs text-slate-500">Contact Placeholder</p></div>
+                            <div class="w-10 h-10 bg-slate-50 rounded-lg border flex items-center justify-center font-black text-slate-800 shadow-sm">P</div>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-slate-800">President</p>
+                                <p class="text-xs text-slate-500">Contact Placeholder</p>
+                            </div>
                         </div>
                         <div class="flex items-center space-x-4">
-                            <div class="w-10 h-10 bg-slate-50 rounded-lg border flex items-center justify-center font-black text-slate-400">VP</div>
-                            <div><p class="text-sm font-bold text-slate-800">Vice President</p><p class="text-xs text-slate-500">Contact Placeholder</p></div>
+                            <div class="w-10 h-10 bg-slate-50 rounded-lg border flex items-center justify-center font-black text-slate-400 shadow-sm">VP</div>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-slate-800">Vice President</p>
+                                <p class="text-xs text-slate-500">Contact Placeholder</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -253,21 +306,21 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 space-y-6">
-                    <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm h-48 flex items-center justify-center text-slate-300 italic">Club Achievements & Highlights Placeholder</div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm h-48 flex items-center justify-center text-slate-300 italic px-6 text-center">Club Achievements & Highlights: Historical database of past POR holders and event outcomes.</div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                    <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Club Leadership</h4>
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-slate-50 rounded-xl border flex items-center justify-center font-black">P</div>
-                            <div><p class="text-sm font-bold text-slate-800">President</p><p class="text-xs text-slate-500">Contact Placeholder</p></div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm h-fit">
+                    <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Club Representative</h4>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-slate-50 rounded-xl border flex items-center justify-center font-black text-slate-800 shadow-sm">P</div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-slate-800">President</p>
+                            <p class="text-xs text-slate-500">Contact Placeholder</p>
                         </div>
                     </div>
                 </div>
             </div>
         `;
 
-        // MOBILE SIDEBAR LOGIC
         function toggleMobileMenu() {
             const sidebar = document.getElementById('sidebar-menu');
             const overlay = document.getElementById('sidebar-overlay');
@@ -275,22 +328,24 @@
             overlay.classList.toggle('hidden');
         }
 
-        // INJECTION LOGIC
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            window.scrollTo(0,0);
+            
+            // Close mobile menu if open
+            const sidebar = document.getElementById('sidebar-menu');
+            if (!sidebar.classList.contains('-translate-x-full')) {
+                toggleMobileMenu();
+            }
+        }
+
         function showEntity(name, type) {
             const injector = document.getElementById('entity-content-injector');
             if (type === 'sacc') injector.innerHTML = saccTemplate(name);
             else if (type === 'committee') injector.innerHTML = committeeTemplate(name);
             else injector.innerHTML = clubTemplate(name); 
-            
             showSection('entity-page');
-
-            // Close menu after selection on mobile
-            if (window.innerWidth < 1024) {
-                const sidebar = document.getElementById('sidebar-menu');
-                if (!sidebar.classList.contains('-translate-x-full')) {
-                    toggleMobileMenu();
-                }
-            }
         }
 
         function populateSidebar() {
@@ -298,7 +353,7 @@
             const commList = document.getElementById('committee-list');
             const clubList = document.getElementById('club-list');
 
-            saccList.innerHTML = `<li><a href="#" onclick="showEntity('SAC Coordinator', 'sacc')" class="flex items-center px-4 py-3 rounded-xl transition text-red-900 font-black border border-red-100 bg-red-50 hover:bg-red-100"><i class="fas fa-crown mr-3"></i>SAC Coordinator</a></li>`;
+            saccList.innerHTML = `<li><a href="#" onclick="showEntity('SAC Coordinator', 'sacc')" class="flex items-center px-4 py-3 rounded-xl transition text-red-900 font-black border border-red-100 bg-red-50 hover:bg-red-100 shadow-sm"><i class="fas fa-crown mr-3"></i>SAC Coordinator</a></li>`;
             
             committees.forEach(item => {
                 commList.innerHTML += `<li><a href="#" onclick="showEntity('${item}', 'committee')" class="sidebar-link block px-4 py-2 rounded-xl transition text-slate-500 hover:text-red-900 font-semibold">${item}</a></li>`;
@@ -307,12 +362,6 @@
             clubs.forEach(item => {
                 clubList.innerHTML += `<li><a href="#" onclick="showEntity('${item}', 'club')" class="sidebar-link block px-4 py-2 rounded-xl transition text-slate-500 hover:text-red-900 font-semibold">${item}</a></li>`;
             });
-        }
-
-        function showSection(sectionId) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
-            document.getElementById(sectionId).classList.remove('hidden');
-            window.scrollTo(0,0);
         }
 
         window.onload = populateSidebar;
