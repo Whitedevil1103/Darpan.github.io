@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPMSAC Digital Portal | IIM Indore</title>
+    <title>Darpan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon", href="SAC1.jpeg">
@@ -19,10 +19,15 @@
 <body class="bg-slate-50 font-sans text-slate-900">
 
     <nav class="bg-white shadow-sm border-b sticky top-0 z-50 px-8 py-0 flex justify-between items-center h-16">
-        <div class="flex items-center space-x-4">
-            <img src=".png" alt="IPM Logo" class="h-20 w-auto object-contain">       
-            <div class="h-6 w-[1px] bg-slate-200 mx-1"></div>
-            <h1 class="text-base font-bold tracking-tight text-slate-700">Digital Portal</h1>
+        <div class="flex items-center">
+            <button onclick="toggleMobileMenu()" class="lg:hidden p-2 mr-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <div class="flex items-center space-x-4">
+                <img src="SAC.png" alt="IPMSAC Logo" class="h-20 w-auto object-contain">       
+                <div class="h-6 w-[1px] bg-slate-200 mx-1"></div>
+                <h1 class="text-base font-bold tracking-tight text-slate-700">Darpan | The IPM Digital Hub</h1>
+            </div>
         </div>
         <div class="flex items-center space-x-6">
             <div class="hidden md:flex space-x-4">
@@ -36,9 +41,15 @@
     </nav>
 
     <div class="flex">
-        <aside class="w-72 h-[calc(100vh-64px)] bg-white border-r sticky top-16 overflow-y-auto hidden lg:block scrollbar-hide">
+        <div id="sidebar-overlay" onclick="toggleMobileMenu()" class="fixed inset-0 bg-slate-900/50 z-30 hidden lg:hidden"></div>
+
+        <aside id="sidebar-menu" class="fixed inset-y-0 left-0 z-40 w-72 bg-white border-r transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:block h-[calc(100vh-64px)] overflow-y-auto scrollbar-hide">
             <div class="p-6">
-                <ul id="c-list" class="mb-8"></ul>
+                <button onclick="toggleMobileMenu()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-red-800">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+
+                <ul id="sacc-list" class="mb-8 mt-4 lg:mt-0"></ul>
                 
                 <div class="mb-6">
                     <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Committees</h3>
@@ -66,12 +77,6 @@
                         <div class="text-2xl font-black text-slate-800">19</div>
                         <div class="text-xs text-slate-400 font-bold uppercase tracking-wider">Active Entities</div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 stat-card">
-                        <div class="text-amber-500 text-xl mb-2"><i class="fas fa-medal"></i></div>
-                        <div class="text-2xl font-black text-slate-800">170</div>
-                        <div class="text-xs text-slate-400 font-bold uppercase tracking-wider">PORs</div>
-                    </div>
-
                     <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 stat-card">
                         <div class="text-blue-600 text-xl mb-2"><i class="fas fa-calendar-check"></i></div>
                         <div class="text-2xl font-black text-slate-800">100+</div>
@@ -115,7 +120,7 @@
                             <p class="text-slate-500 text-sm mt-1">The centralized portal prototype is now available for internal testing and coordination review.</p>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6 mt-4">
                         <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
                             <span class="text-xs font-bold uppercase text-slate-400">Feb</span>
                             <span class="text-2xl font-black">22</span>
@@ -125,7 +130,7 @@
                             <p class="text-slate-500 text-sm mt-1">The official timeline for student council and committee head applications is now live. Ensure institutional memory preservation by adhering to the new handover protocols.</p>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6 mt-4">
                         <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
                             <span class="text-xs font-bold uppercase text-slate-400">Feb</span>
                             <span class="text-2xl font-black">25</span>
@@ -135,7 +140,7 @@
                             <p class="text-slate-500 text-sm mt-1">The Academic Committee has integrated past papers and supplementary resources for core Mathematics and Economics courses into the Digital Vault.</p>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6 mt-4">
                         <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
                             <span class="text-xs font-bold uppercase text-slate-400">Mar</span>
                             <span class="text-2xl font-black">01</span>
@@ -145,7 +150,7 @@
                             <p class="text-slate-500 text-sm mt-1">A partner organization is offering a 4-week engagement. Strengthening IPM’s brand image through professional corporate collaborations. Check the external portal for details.</p>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6 mt-4">
                         <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
                             <span class="text-xs font-bold uppercase text-slate-400">Mar</span>
                             <span class="text-2xl font-black">04</span>
@@ -155,7 +160,7 @@
                             <p class="text-slate-500 text-sm mt-1">Infrastructure Committee has approved a maintenance slot for the hostel lounges this Sunday. Enhancing transparency and campus facility management.</p>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-6 mt-4">
                         <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center min-w-[80px]">
                             <span class="text-xs font-bold uppercase text-slate-400">Mar</span>
                             <span class="text-2xl font-black">08</span>
@@ -203,7 +208,7 @@
             </div>
         `;
 
-        // 2. COMMITTEE TEMPLATE (President & Vice President)
+        // 2. COMMITTEE TEMPLATE (Fixed nesting for President & Vice President)
         const committeeTemplate = (name) => `
             <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
@@ -213,25 +218,25 @@
                 <div class="flex space-x-2">
                     <button class="bg-white border px-4 py-2 rounded-xl text-xs font-bold shadow-sm hover:bg-slate-50"><i class="fas fa-camera mr-2"></i>Events Gallery</button>
                 </div>
-
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 space-y-6">
                     <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm h-48 flex items-center justify-center text-slate-300 italic">Activity Calendar & Live Event Logs</div>
                     <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm h-48 flex items-center justify-center text-slate-300 italic">Vision & Annual Roadmap Placeholder</div>
                 </div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Committee Leadership</h4>
-                <div class="space-y-6">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-10 h-10 bg-slate-50 rounded-lg border flex items-center justify-center font-black">P</div>
-                        <div><p class="text-sm font-bold text-slate-800">President</p><p class="text-xs text-slate-500">Contact Placeholder</p></div>
-                    </div>                        <div class="flex items-center space-x-4">
-                          <div class="w-10 h-10 bg-slate-50 rounded-lg border flex items-center justify-center font-black text-slate-400">VP</div>
-                        <div><p class="text-sm font-bold text-slate-800">Vice President</p><p class="text-xs text-slate-500">Contact Placeholder</p></div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Committee Leadership</h4>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-slate-50 rounded-lg border flex items-center justify-center font-black">P</div>
+                            <div><p class="text-sm font-bold text-slate-800">President</p><p class="text-xs text-slate-500">Contact Placeholder</p></div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-slate-50 rounded-lg border flex items-center justify-center font-black text-slate-400">VP</div>
+                            <div><p class="text-sm font-bold text-slate-800">Vice President</p><p class="text-xs text-slate-500">Contact Placeholder</p></div>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         `;
 
@@ -262,13 +267,30 @@
             </div>
         `;
 
+        // MOBILE SIDEBAR LOGIC
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar-menu');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
         // INJECTION LOGIC
         function showEntity(name, type) {
             const injector = document.getElementById('entity-content-injector');
             if (type === 'sacc') injector.innerHTML = saccTemplate(name);
             else if (type === 'committee') injector.innerHTML = committeeTemplate(name);
-            else injector.innerHTML = clubTemplate(name); // Clubs use the 1-person template
+            else injector.innerHTML = clubTemplate(name); 
+            
             showSection('entity-page');
+
+            // Close menu after selection on mobile
+            if (window.innerWidth < 1024) {
+                const sidebar = document.getElementById('sidebar-menu');
+                if (!sidebar.classList.contains('-translate-x-full')) {
+                    toggleMobileMenu();
+                }
+            }
         }
 
         function populateSidebar() {
@@ -296,6 +318,4 @@
         window.onload = populateSidebar;
     </script>
 </body>
-
 </html>
-
